@@ -1,0 +1,9 @@
+# Django settings
+SECRET_KEY='django-insecure-*_c-q^wmn78%-prs%expc#0fv66aftb+-a$d0&%&3qb#l%x6er'
+
+# Database settings
+DB_NAME='django'
+DB_USER='django'
+DB_PASSWORD='django'
+DB_HOST='db'
+DB_PORT="3306"
