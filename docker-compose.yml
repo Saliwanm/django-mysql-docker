@@ -28,6 +28,8 @@ services:
       - db
     networks:
       - app
+    environment:
+      - PYTHONUNBUFFERED=1
 
 networks:
   app:
