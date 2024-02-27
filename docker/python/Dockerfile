@@ -23,3 +23,5 @@ COPY . /django_project/
 
 # Copy .env file from directory to the inside our container
 COPY .env /django_project/.env
+
+# ENTRYPOINT ["/django_project/docker/python/entrypoint.sh"]

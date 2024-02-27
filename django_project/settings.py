@@ -97,6 +97,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",)
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -128,15 +130,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    # '/django_project/static/',
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     # '/django_project/static/',
+# ]
 
 STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = ''
-MEDIA_URL = ''
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
