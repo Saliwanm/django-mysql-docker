@@ -1,7 +1,10 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.exceptions import PermissionDenied
-from .models import ProductsModel, CategoryModel, CategoryProductModel
 from django.db.models import Q
+
+from .models import ProductsModel, CategoryModel, CategoryProductModel
+from .forms import ProductForm
+
 
 
 def productsView(request):
@@ -23,19 +26,39 @@ def product_detail_View(request, id):
 def add_productView(request):
     if request.user.is_authenticated:
         if request.method == "GET":
-            categories = CategoryModel.objects.all()
+            form = ProductForm(initial={
+                "user": request.user
+            })
             return render(request, "products/add_product.html", {
-                "categories": categories,
+                "form": form,
             })
         else:
-            product = ProductsModel()
-            product.tittle = request.POST.get("tittle")
-            product.description = request.POST.get("description")
-            product.user = request.user
-            product.save()
-            return redirect("/")
+            form = ProductForm(request.POST)
+            if form.is_valid():
+                form.save(user=request.user)
+                return redirect("/")
+            else:
+                return render(request, "products/add_product.html", {
+                    "form": form,
+                })
     else:
         return redirect("/")
+# def add_productView(request):
+#     if request.user.is_authenticated:
+#         if request.method == "GET":
+#             categories = CategoryModel.objects.all()
+#             return render(request, "products/add_product.html", {
+#                 "categories": categories,
+#             })
+#         else:
+#             product = ProductsModel()
+#             product.tittle = request.POST.get("tittle")
+#             product.description = request.POST.get("description")
+#             product.user = request.user
+#             product.save()
+#             return redirect("/")
+#     else:
+#         return redirect("/")
 
 
 def edit_product_View(request, id):
