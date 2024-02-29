@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import MenuItem
-from products.models import ProductsView
+from products.models import ProductsModel
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -9,10 +9,8 @@ from django.contrib.auth import authenticate, login, logout
 
 def homeView(request):
     menu_items = MenuItem.objects.all()
-    products = ProductsView.objects.filter(Q(dysplay_on_main_page=True) | Q(approved=True)).order_by("-tittle")
     return render(request, "main/index.html", {
         "menu_items": menu_items,
-        "products": products,
     })
 
 def sign_upView(request):
