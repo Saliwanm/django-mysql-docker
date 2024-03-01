@@ -10,6 +10,7 @@
                 <p class="card-text">{{ product.description }}</p>
                 <a href="{% url 'product_details' id=product.id %}">Details</a>
                 <a href="{% url 'edit_product' id=product.id %}">Edit</a>
+                <a href="{% url 'add_to_cart' id=product.id %}" class="card-link">Add to cart</a>
             </div>
         </div>
     {% endfor %}

@@ -43,6 +43,7 @@ def add_productView(request):
                 })
     else:
         return redirect("/")
+# *********************
 # def add_productView(request):
 #     if request.user.is_authenticated:
 #         if request.method == "GET":
@@ -59,6 +60,7 @@ def add_productView(request):
 #             return redirect("/")
 #     else:
 #         return redirect("/")
+# *********************
 
 
 def edit_product_View(request, id):
@@ -92,12 +94,12 @@ def update_product_View(request, id):
         raise PermissionDenied
 
 
-def add_categoryView(request):
-    if request.user.is_authenticated:
-        if request.method == "GET":
-            return render(request, "products/add_category.html")
-        else:
-            category = CategoryModel()
-            category.title = request.POST.get("title")
-            category.save()
-            return redirect("/")
+# def add_categoryView(request):
+#     if request.user.is_authenticated:
+#         if request.method == "GET":
+#             return render(request, "products/add_category.html")
+#         else:
+#             category = CategoryModel()
+#             category.title = request.POST.get("title")
+#             category.save()
+#             return redirect("/")

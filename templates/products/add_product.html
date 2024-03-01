@@ -20,23 +20,7 @@
                     {% if form.description.errors %}
                      <div class="form-text text-danger">{{ form.description.errors }}</div>
                     {% endif %}
-                </div>
-                <!-- <div class="mb-3">
-                    <label for="tittle" class="form-label">Tittle</label>
-                    <input type="text" class="form-control" id="tittle" name="tittle" {% if product %} value="{{ product.tittle }}" {% endif %} aria-describedby="tittle">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description">{% if product %} {{ product.description }} {% endif %}</textarea>
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" id="floatingSelect" name="categories" multiple aria-label="Floating label select example">
-                      {% for category in categories %}
-                        <option value="{{ category.id }}" {% if product_categories %} {% for p_c in product_categories %} {% if p_c.category_id == category.id %} selected {% endif %}{% endfor %}{% endif %}>{{ category.title }}</option>
-                      {% endfor %}
-                    </select>
-                </div> -->
-                
+                </div>                
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
